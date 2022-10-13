@@ -1,4 +1,4 @@
-package com.javarush.osypenko.entyti;
+package com.javarush.osypenko.entities.animal;
 
 public abstract class Animal {
     public abstract void eat();
