@@ -3,12 +3,8 @@ package com.javarush.osypenko.field;
 import com.javarush.osypenko.constants.ConsoleColors;
 import com.javarush.osypenko.constants.Constants;
 
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
 public class GameField {
     public static Cell[][] field = new Cell[Constants.CELL_X][Constants.CELL_Y];
-    private String black = ConsoleColors.BLACK_BOLD;
 
     public void cellPrint() {
         for (int i = 0; i <= Constants.CELL_X; i++) {

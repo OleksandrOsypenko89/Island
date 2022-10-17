@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class Cell {
-    int row;
-    int col;
+    private int row;
+    private int col;
 
     public Cell(int row, int col) {
         this.row = row;
@@ -32,5 +32,13 @@ public class Cell {
     }
 
     private void multiply() {
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 }

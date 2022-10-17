@@ -1,97 +1,102 @@
 package com.javarush.osypenko.constants;
 
+import com.javarush.osypenko.entities.AnimalsEnum;
+import com.javarush.osypenko.entities.animal.Animal;
+import com.javarush.osypenko.entities.animal.carnivores.*;
+import com.javarush.osypenko.entities.animal.herbivores.*;
+import com.javarush.osypenko.entities.plant.Plant;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CharacteristicsEntities {
-    // Beer 🐻
-    public static final double beerWeight = 500;
-    public static final int beerMaximumNumberOfAnimalsOfThisSpeciesPerCage = 5;
-    public static final int beerSpeedOfMovingCellsMove = 2;
-    public static final int beerKilogramsOfFoodAnAnimalNeedForSatiety = 80;
+    private static Map<AnimalsEnum, ? super Animal> preferences = new HashMap<>();
+    private static int[][] probabilities = new int[AnimalsEnum.values().length][AnimalsEnum.values().length];
 
-    // Eagle 🦅
-    public static final double eagleWeight = 6;
-    public static final int eagleMaximumNumberOfAnimalsOfThisSpeciesPerCage = 20;
-    public static final int eagleSpeedOfMovingCellsMove = 3;
-    public static final int eagleKilogramsOfFoodAnAnimalNeedForSatiety = 1;
+    static  {
+        preferences.put(AnimalsEnum.WOLF, new Wolf("Волк", "\uD83D\uDC3A", 50, 30, 3, 8));
+        preferences.put(AnimalsEnum.SNAKE, new Snake("Удав", "\uD83D\uDC0D", 15, 30, 1, 3));
+        preferences.put(AnimalsEnum.FOX, new Fox("Лиса", "\uD83E\uDD8A", 8, 30, 2, 2));
+        preferences.put(AnimalsEnum.BEAR, new Bear("Медведь", "\uD83D\uDC3B", 500, 5, 2, 80));
+        preferences.put(AnimalsEnum.EAGLE, new Eagle("Орел", "\uD83E\uDD85", 6, 20, 3, 1));
+        preferences.put(AnimalsEnum.HORSE, new Horse("Лошадь", "\uD83D\uDC0E", 400, 20, 4, 60));
+        preferences.put(AnimalsEnum.DEER, new Deer("Олень", "\uD83E\uDD8C", 300, 20, 4, 50));
+        preferences.put(AnimalsEnum.RABBIT, new Rabbit("Кролик", "\uD83D\uDC07", 2, 150, 2, 0.45));
+        preferences.put(AnimalsEnum.MOUSE, new Mouse("Мышь", "\uD83D\uDC01", 0.05, 500, 1, 0.01));
+        preferences.put(AnimalsEnum.GOAT, new Goat("Коза", "\uD83D\uDC10", 60, 140, 3, 10));
+        preferences.put(AnimalsEnum.SHEEP, new Sheep("Овца", "\uD83D\uDC11", 70, 140, 3, 15));
+        preferences.put(AnimalsEnum.BOAR, new Boar("Кабан", "\uD83D\uDC17", 400, 50,2,50));
+        preferences.put(AnimalsEnum.BUFFALO, new Buffalo("Буйвол", "\uD83D\uDC03", 700, 10, 3, 100));
+        preferences.put(AnimalsEnum.DUCK, new Duck("Утка", "\uD83E\uDD86", 1, 200, 4, 0.15));
+        preferences.put(AnimalsEnum.CATERPILLAR, new Caterpillar("Гусеница", "\uD83D\uDC1B", 0.01, 1000, 0,0));
+//        preferences.put(AnimalsEnum.PLANT, new Plant()); // растения не являются насследником Animal
 
-    // Fox 🦊
-    public static final double foxWeight = 8;
-    public static final int foxMaximumNumberOfAnimalsOfThisSpeciesPerCage = 30;
-    public static final int foxSpeedOfMovingCellsMove = 2;
-    public static final int foxKilogramsOfFoodAnAnimalNeedForSatiety = 2;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.HORSE.ordinal()] = 10;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.DEER.ordinal()] = 15;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.RABBIT.ordinal()] = 60;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 80;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.GOAT.ordinal()] = 60;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.SHEEP.ordinal()] = 70;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.BOAR.ordinal()] = 15;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.BUFFALO.ordinal()] = 10;
+        probabilities[AnimalsEnum.WOLF.ordinal()][AnimalsEnum.DUCK.ordinal()] = 40;
 
-    // Snake 🐍,
-    public static final double snakeWeight = 15;
-    public static final int snakeMaximumNumberOfAnimalsOfThisSpeciesPerCage = 30;
-    public static final int snakeSpeedOfMovingCellsMove = 1;
-    public static final int snakeKilogramsOfFoodAnAnimalNeedForSatiety = 3;
+        probabilities[AnimalsEnum.SNAKE.ordinal()][AnimalsEnum.FOX.ordinal()] = 15;
+        probabilities[AnimalsEnum.SNAKE.ordinal()][AnimalsEnum.RABBIT.ordinal()] = 20;
+        probabilities[AnimalsEnum.SNAKE.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 40;
+        probabilities[AnimalsEnum.SNAKE.ordinal()][AnimalsEnum.DUCK.ordinal()] = 10;
 
-    // Wolf 🐺
-    public static final double wolfWeight = 50;
-    public static final int wolfMaximumNumberOfAnimalsOfThisSpeciesPerCage = 30;
-    public static final int wolfSpeedOfMovingCellsMove = 3;
-    public static final int wolfKilogramsOfFoodAnAnimalNeedForSatiety = 8;
+        probabilities[AnimalsEnum.FOX.ordinal()][AnimalsEnum.RABBIT.ordinal()] = 70;
+        probabilities[AnimalsEnum.FOX.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 90;
+        probabilities[AnimalsEnum.FOX.ordinal()][AnimalsEnum.DUCK.ordinal()] = 60;
+        probabilities[AnimalsEnum.FOX.ordinal()][AnimalsEnum.CATERPILLAR.ordinal()] = 40;
 
-    // Boar 🐗
-    public static final double boarWeight = 400;
-    public static final int boarMaximumNumberOfAnimalsOfThisSpeciesPerCage = 50;
-    public static final int boarSpeedOfMovingCellsMove = 2;
-    public static final int boarKilogramsOfFoodAnAnimalNeedForSatiety = 50;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.SNAKE.ordinal()] = 80;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.HORSE.ordinal()] = 40;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.DEER.ordinal()] = 80;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.RABBIT.ordinal()] = 80;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 90;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.GOAT.ordinal()] = 70;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.SHEEP.ordinal()] = 70;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.BOAR.ordinal()] = 50;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.BUFFALO.ordinal()] = 20;
+        probabilities[AnimalsEnum.BEAR.ordinal()][AnimalsEnum.DUCK.ordinal()] = 10;
 
-    // Buffalo 🐃
-    public static final double buffaloWeight = 700;
-    public static final int buffaloMaximumNumberOfAnimalsOfThisSpeciesPerCage = 10;
-    public static final int buffaloSpeedOfMovingCellsMove = 3;
-    public static final int buffaloKilogramsOfFoodAnAnimalNeedForSatiety = 100;
+        probabilities[AnimalsEnum.EAGLE.ordinal()][AnimalsEnum.FOX.ordinal()] = 10;
+        probabilities[AnimalsEnum.EAGLE.ordinal()][AnimalsEnum.RABBIT.ordinal()] = 90;
+        probabilities[AnimalsEnum.EAGLE.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 90;
+        probabilities[AnimalsEnum.EAGLE.ordinal()][AnimalsEnum.DUCK.ordinal()] = 80;
 
-    // Caterpillar 🐛.
-    public static final double caterpillarWeight = 0.01;
-    public static final int caterpillarMaximumNumberOfAnimalsOfThisSpeciesPerCage = 1000;
-    public static final int caterpillarSpeedOfMovingCellsMove = 0;
-    public static final int caterpillarKilogramsOfFoodAnAnimalNeedForSatiety = 0;
+        probabilities[AnimalsEnum.HORSE.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Deep 🦌
-    public static final double deepWeight = 300;
-    public static final int deepMaximumNumberOfAnimalsOfThisSpeciesPerCage = 20;
-    public static final int deepSpeedOfMovingCellsMove = 4;
-    public static final int deepKilogramsOfFoodAnAnimalNeedForSatiety = 50;
+        probabilities[AnimalsEnum.DEER.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Duck 🦆
-    public static final double duckWeight = 1;
-    public static final int duckMaximumNumberOfAnimalsOfThisSpeciesPerCage = 200;
-    public static final int duckSpeedOfMovingCellsMove = 4;
-    public static final double duckKilogramsOfFoodAnAnimalNeedForSatiety = 0.15;
+        probabilities[AnimalsEnum.RABBIT.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Goat 🐐
-    public static final double goatWeight = 60;
-    public static final int goatMaximumNumberOfAnimalsOfThisSpeciesPerCage = 140;
-    public static final int goatSpeedOfMovingCellsMove = 3;
-    public static final int goatKilogramsOfFoodAnAnimalNeedForSatiety = 10;
+        probabilities[AnimalsEnum.MOUSE.ordinal()][AnimalsEnum.CATERPILLAR.ordinal()] = 90;
+        probabilities[AnimalsEnum.MOUSE.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Horse 🐎
-    public static final double horseWeight = 400;
-    public static final int horseMaximumNumberOfAnimalsOfThisSpeciesPerCage = 20;
-    public static final int horseSpeedOfMovingCellsMove = 4;
-    public static final int horseKilogramsOfFoodAnAnimalNeedForSatiety = 60;
+        probabilities[AnimalsEnum.GOAT.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Mouse 🐁
-    public static final double mouseWeight = 0.05;
-    public static final int mouseMaximumNumberOfAnimalsOfThisSpeciesPerCage = 500;
-    public static final int mouseSpeedOfMovingCellsMove = 1;
-    public static final double mouseKilogramsOfFoodAnAnimalNeedForSatiety = 0.01;
+        probabilities[AnimalsEnum.SHEEP.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Rabbit 🐇
-    public static final double rabbitWeight = 2;
-    public static final int rabbitMaximumNumberOfAnimalsOfThisSpeciesPerCage = 150;
-    public static final int rabbitSpeedOfMovingCellsMove = 2;
-    public static final double rabbitKilogramsOfFoodAnAnimalNeedForSatiety = 0.45;
+        probabilities[AnimalsEnum.BOAR.ordinal()][AnimalsEnum.MOUSE.ordinal()] = 50;
+        probabilities[AnimalsEnum.BOAR.ordinal()][AnimalsEnum.CATERPILLAR.ordinal()] = 90;
+        probabilities[AnimalsEnum.BOAR.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Sheep 🐑
-    public static final double sheepWeight = 70;
-    public static final int sheepMaximumNumberOfAnimalsOfThisSpeciesPerCage = 140;
-    public static final int sheepSpeedOfMovingCellsMove = 3;
-    public static final int sheepKilogramsOfFoodAnAnimalNeedForSatiety = 15;
+        probabilities[AnimalsEnum.BUFFALO.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
 
-    // Plant 🌿
-    public static final double plantWeight = 1;
-    public static final int plantMaximumNumberOfAnimalsOfThisSpeciesPerCage = 200;
+        probabilities[AnimalsEnum.DUCK.ordinal()][AnimalsEnum.CATERPILLAR.ordinal()] = 90;
+        probabilities[AnimalsEnum.DUCK.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
+
+        probabilities[AnimalsEnum.CATERPILLAR.ordinal()][AnimalsEnum.PLANT.ordinal()] = 100;
+    }
+
+    public static Map<AnimalsEnum, ? super Animal> getPreferences() {
+        return preferences;
+    }
+
+    public static int[][] getProbabilities() {
+        return probabilities;
+    }
 }
