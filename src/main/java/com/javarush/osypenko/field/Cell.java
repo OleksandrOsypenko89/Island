@@ -1,6 +1,6 @@
 package com.javarush.osypenko.field;
 
-import com.javarush.osypenko.entities.animal.Animal;
+import com.javarush.osypenko.entities.Organism;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class Cell {
         this.col = col;
     }
 
-    public Map<String, Set<Animal>> sets = new HashMap<>();
+    public Map<String, Set<Organism>> sets = new HashMap<>();
 
     public void makeStep() {
         eat();

@@ -1,11 +1,12 @@
 package com.javarush.osypenko.entities.animal;
 
 import com.javarush.osypenko.constants.Constants;
+import com.javarush.osypenko.entities.Organism;
 import com.javarush.osypenko.field.Cell;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Animal {
+public abstract class Animal implements Organism{
     private final String name; // Имя животного
     private final String icon; // Иконка животного
     private final double weight; // Вес
@@ -41,5 +42,41 @@ public abstract class Animal {
 
     public void multiply() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxNumberOfAnimalsOfThisSpeciesPerCage() {
+        return maxNumberOfAnimalsOfThisSpeciesPerCage;
+    }
+
+    public int getSpeedOfMovingCellsMove() {
+        return speedOfMovingCellsMove;
+    }
+
+    public double getKilogramsOfFoodAnAnimalNeedsForSatiety() {
+        return kilogramsOfFoodAnAnimalNeedsForSatiety;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", icon='" + icon + '\'' +
+                ", weight=" + weight +
+                ", maxNumberOfAnimalsOfThisSpeciesPerCage=" + maxNumberOfAnimalsOfThisSpeciesPerCage +
+                ", speedOfMovingCellsMove=" + speedOfMovingCellsMove +
+                ", kilogramsOfFoodAnAnimalNeedsForSatiety=" + kilogramsOfFoodAnAnimalNeedsForSatiety +
+                '}';
     }
 }
