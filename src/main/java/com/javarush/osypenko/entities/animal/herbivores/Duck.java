@@ -1,8 +1,11 @@
 package com.javarush.osypenko.entities.animal.herbivores;
 
-public class Duck extends Herbivore { // Утка 🦆
+import com.javarush.osypenko.entities.animal.Animal;
+import com.javarush.osypenko.pref.ObjectPrefs;
 
-    public Duck(String name, String icon, double weight, int maxNumberOfAnimalsOfThisSpeciesPerCage, int speedOfMovingCellsMove, double kilogramsOfFoodAnAnimalNeedsForSatiety) {
-        super(name, icon, weight, maxNumberOfAnimalsOfThisSpeciesPerCage, speedOfMovingCellsMove, kilogramsOfFoodAnAnimalNeedsForSatiety);
+public class Duck extends Animal { // Утка 🦆
+
+    public Duck(ObjectPrefs objectPrefs) {
+        super(objectPrefs);
     }
 }

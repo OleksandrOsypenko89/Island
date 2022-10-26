@@ -1,17 +1,10 @@
 package com.javarush.osypenko.entities.plant;
 
 import com.javarush.osypenko.entities.Organism;
+import com.javarush.osypenko.pref.ObjectPrefs;
 
-public class Plant implements Organism { // Растения 🌿
-    private final String name; // Имя животного
-    private final String icon; // Иконка животного
-    private final double weight; // Вес
-    private final int maxNumberOfAnimalsOfThisSpeciesPerCage; // Максимпльное количество животных данного вида в одной клетке
-
-    public Plant(String name, String icon, double weight, int maxNumberOfAnimalsOfThisSpeciesPerCage) {
-        this.name = name;
-        this.icon = icon;
-        this.weight = weight;
-        this.maxNumberOfAnimalsOfThisSpeciesPerCage = maxNumberOfAnimalsOfThisSpeciesPerCage;
+public abstract class Plant extends Organism {
+    public Plant(ObjectPrefs objectPrefs) {
+        super(objectPrefs);
     }
 }

@@ -1,8 +1,11 @@
 package com.javarush.osypenko.entities.animal.carnivores;
 
-public class Snake extends Carnivore { // Удав 🐍
+import com.javarush.osypenko.entities.animal.Animal;
+import com.javarush.osypenko.pref.ObjectPrefs;
 
-    public Snake(String name, String icon, double weight, int maxNumberOfAnimalsOfThisSpeciesPerCage, int speedOfMovingCellsMove, double kilogramsOfFoodAnAnimalNeedsForSatiety) {
-        super(name, icon, weight, maxNumberOfAnimalsOfThisSpeciesPerCage, speedOfMovingCellsMove, kilogramsOfFoodAnAnimalNeedsForSatiety);
+public class Snake extends Animal { // Удав 🐍
+
+    public Snake(ObjectPrefs objectPrefs) {
+        super(objectPrefs);
     }
 }

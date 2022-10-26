@@ -1,5 +1,6 @@
 package com.javarush.osypenko.exception;
 
+@SuppressWarnings("unused")
 public class AnimalException extends RuntimeException{
     public AnimalException() {
         super();

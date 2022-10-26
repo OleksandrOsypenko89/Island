@@ -1,6 +1,6 @@
-package com.javarush.osypenko.entities;
+package com.javarush.osypenko.pref;
 
-public enum AnimalsEnum {
+public enum EntitiesType {
     BEAR,
     EAGLE,
     FOX,
@@ -16,5 +16,5 @@ public enum AnimalsEnum {
     MOUSE,
     RABBIT,
     SHEEP,
-    PLANT
+    GRASS
 }

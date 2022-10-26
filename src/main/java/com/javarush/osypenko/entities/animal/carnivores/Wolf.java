@@ -1,8 +1,14 @@
 package com.javarush.osypenko.entities.animal.carnivores;
 
-public class Wolf extends Carnivore { // Волк 🐺
+import com.javarush.osypenko.entities.animal.Animal;
+import com.javarush.osypenko.pref.ObjectPrefs;
 
-    public Wolf(String name, String icon, double weight, int maxNumberOfAnimalsOfThisSpeciesPerCage, int speedOfMovingCellsMove, double kilogramsOfFoodAnAnimalNeedsForSatiety) {
-        super(name, icon, weight, maxNumberOfAnimalsOfThisSpeciesPerCage, speedOfMovingCellsMove, kilogramsOfFoodAnAnimalNeedsForSatiety);
+public class Wolf extends Animal { // Волк 🐺
+
+    public Wolf(ObjectPrefs objectPrefs) {
+        super(objectPrefs);
     }
+
+
 }
+
