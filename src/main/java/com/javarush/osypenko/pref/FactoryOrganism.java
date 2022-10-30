@@ -8,23 +8,25 @@ import com.javarush.osypenko.entities.plant.grass.Grass;
 
 public class FactoryOrganism {
     public static Organism getOrganism(EntitiesType entitiesType) {
+
+        ObjectPrefs objectPrefs = CharacteristicsEntities.getCharacteristicsEntities().get(entitiesType);
         return switch (entitiesType) {
-            case BEAR -> new Bear(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.BEAR));
-            case EAGLE -> new Eagle(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.EAGLE));
-            case FOX -> new Fox(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.FOX));
-            case SNAKE -> new Snake(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.SNAKE));
-            case WOLF -> new Wolf(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.WOLF));
-            case BOAR -> new Boar(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.BOAR));
-            case BUFFALO -> new Buffalo(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.BUFFALO));
-            case CATERPILLAR -> new Caterpillar(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.CATERPILLAR));
-            case DEER -> new Deer(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.DEER));
-            case DUCK -> new Duck(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.DUCK));
-            case GOAT -> new Goat(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.GOAT));
-            case HORSE -> new Horse(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.HORSE));
-            case MOUSE -> new Mouse(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.MOUSE));
-            case RABBIT -> new Rabbit(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.RABBIT));
-            case SHEEP -> new Sheep(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.SHEEP));
-            case GRASS -> new Grass(CharacteristicsEntities.getCharacteristicsEntities().get(EntitiesType.GRASS));
+            case BEAR -> new Bear(objectPrefs);
+            case EAGLE -> new Eagle(objectPrefs);
+            case FOX -> new Fox(objectPrefs);
+            case SNAKE -> new Snake(objectPrefs);
+            case WOLF -> new Wolf(objectPrefs);
+            case BOAR -> new Boar(objectPrefs);
+            case BUFFALO -> new Buffalo(objectPrefs);
+            case CATERPILLAR -> new Caterpillar(objectPrefs);
+            case DEER -> new Deer(objectPrefs);
+            case DUCK -> new Duck(objectPrefs);
+            case GOAT -> new Goat(objectPrefs);
+            case HORSE -> new Horse(objectPrefs);
+            case MOUSE -> new Mouse(objectPrefs);
+            case RABBIT -> new Rabbit(objectPrefs);
+            case SHEEP -> new Sheep(objectPrefs);
+            case GRASS -> new Grass(objectPrefs);
         };
     }
 }

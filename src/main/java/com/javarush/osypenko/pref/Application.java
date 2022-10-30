@@ -11,7 +11,7 @@ import java.util.*;
 import static com.javarush.osypenko.constants.Constants.REPEAT;
 import static com.javarush.osypenko.field.GameField.field;
 
-public class Print {
+public class Application {
     boolean isLife = true;
     public void runner() {
         GameField gameField = new GameField();
@@ -49,7 +49,6 @@ public class Print {
         int rabbit = 0;
         int sheep = 0;
         int grass = 0;
-
 
         for (Cell[] cells : field) {
             for (Cell item : cells) {

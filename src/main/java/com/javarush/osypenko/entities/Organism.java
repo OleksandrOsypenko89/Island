@@ -62,7 +62,9 @@ public abstract class Organism {
             while (iterator.hasNext()) {
                 Organism organism = iterator.next();
                 randomInt = ThreadLocalRandom.current().nextInt(100);
-                int currentProbability = CharacteristicsEntities.getHowLikelyTheAnimalIsToEatTheFood()[EntitiesType.valueOf(this.getClass().getSimpleName().toUpperCase()).ordinal()][EntitiesType.valueOf(organism.getClass().getSimpleName().toUpperCase()).ordinal()];
+                int ordinal1 = EntitiesType.valueOf(this.getClass().getSimpleName().toUpperCase()).ordinal();
+                int ordinal2 = EntitiesType.valueOf(organism.getClass().getSimpleName().toUpperCase()).ordinal();
+                int currentProbability = CharacteristicsEntities.getHowLikelyTheAnimalIsToEatTheFood()[ordinal1][ordinal2];
                 if (randomInt < currentProbability) {
                     iterator.remove();
                     kgFood += organism.weight;

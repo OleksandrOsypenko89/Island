@@ -1,13 +1,13 @@
 package com.javarush.osypenko.pref;
 
 public class ObjectPrefs {
-    private final String name; // Имя животного
-    private final String icon; // Иконка животного
-    private final double weight; // Вес
-    private final int maxNumberOfAnimalsOfThisSpeciesPerCage; // Максимпльное количество животных данного вида в одной клетке
-    private final int speedOfMovingCellsMove; // Скорость перемещения по клеткам
-    private final double kilogramsOfFoodAnAnimalNeedsForSatiety; // Килограммы пищи необходимые для насыщения
-    private final double deathByStarvationAtWeight; // смерть от голода при весе
+    private final String name;
+    private final String icon;
+    private final double weight;
+    private final int maxNumberOfAnimalsOfThisSpeciesPerCage;
+    private final int speedOfMovingCellsMove;
+    private final double kilogramsOfFoodAnAnimalNeedsForSatiety;
+    private final double deathByStarvationAtWeight;
 
     public ObjectPrefs(String name, String icon, double weight, int maxNumberOfAnimalsOfThisSpeciesPerCage, int speedOfMovingCellsMove, double kilogramsOfFoodAnAnimalNeedsForSatiety, double deathByStarvationAtWeight) {
         this.name = name;
