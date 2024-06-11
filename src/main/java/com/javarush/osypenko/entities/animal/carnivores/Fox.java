@@ -8,4 +8,5 @@ public class Fox extends Animal {
     public Fox(ObjectPrefs objectPrefs) {
         super(objectPrefs);
     }
+
 }

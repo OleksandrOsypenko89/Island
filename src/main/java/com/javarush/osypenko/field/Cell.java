@@ -1,11 +1,12 @@
 package com.javarush.osypenko.field;
 
+import com.javarush.osypenko.animalmakers.EntitiesType;
 import com.javarush.osypenko.constants.CharacteristicsEntities;
 import com.javarush.osypenko.entities.Organism;
 import com.javarush.osypenko.entities.animal.herbivores.Caterpillar;
 import com.javarush.osypenko.entities.plant.grass.Grass;
-import com.javarush.osypenko.pref.EntitiesType;
-import com.javarush.osypenko.pref.FactoryOrganism;
+import com.javarush.osypenko.animalmakers.FactoryOrganism;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,7 +14,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class Cell {
+    @Getter
     private final int row;
+    @Getter
     private final int col;
 
     public Cell(int row, int col) {
@@ -21,15 +24,15 @@ public class Cell {
         this.col = col;
     }
 
-    public Map<EntitiesType, Set<Organism>> sets = new HashMap<>();
+    public volatile Map<EntitiesType, Set<Organism>> sets = new HashMap<>();
 
-    public void makeStep() {
-        eat();
-        move();
+    public synchronized void makeStep() {
         multiply();
+        move();
+        eat();
     }
 
-    private void move() {
+    private synchronized void move() {
         for (Map.Entry<EntitiesType, Set<Organism>> pair : sets.entrySet()) {
             Set<Organism> organismSet = pair.getValue();
             for (Organism organism : organismSet) {
@@ -41,7 +44,7 @@ public class Cell {
         }
     }
 
-    private void multiply() {
+    private synchronized void multiply() {
         Iterator<Map.Entry<EntitiesType, Set<Organism>>> iterator = sets.entrySet().iterator();
         //noinspection WhileLoopReplaceableByForEach
         while (iterator.hasNext()) {
@@ -58,7 +61,7 @@ public class Cell {
         }
     }
 
-    private void eat() {
+    private synchronized void eat() {
         for (Map.Entry<EntitiesType, Set<Organism>> pair : sets.entrySet()) {
             Set<Organism> organismSet = pair.getValue();
 
@@ -95,13 +98,5 @@ public class Cell {
                 }
             }
         }
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
     }
 }

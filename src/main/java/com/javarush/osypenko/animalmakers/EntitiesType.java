@@ -1,4 +1,4 @@
-package com.javarush.osypenko.pref;
+package com.javarush.osypenko.animalmakers;
 
 public enum EntitiesType {
     BEAR,

@@ -9,6 +9,5 @@ public class Wolf extends Animal {
         super(objectPrefs);
     }
 
-
 }
 

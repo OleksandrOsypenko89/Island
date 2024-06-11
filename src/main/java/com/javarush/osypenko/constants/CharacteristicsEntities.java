@@ -1,11 +1,14 @@
 package com.javarush.osypenko.constants;
-import com.javarush.osypenko.pref.EntitiesType;
+import com.javarush.osypenko.animalmakers.EntitiesType;
 import com.javarush.osypenko.pref.ObjectPrefs;
+import lombok.Getter;
 
 import java.util.*;
 
 public class CharacteristicsEntities {
+    @Getter
     private static final Map<EntitiesType, ObjectPrefs> characteristicsEntities = new HashMap<>();
+    @Getter
     private static final int[][] howLikelyTheAnimalIsToEatTheFood = new int[EntitiesType.values().length][EntitiesType.values().length];
 
     static  {
@@ -145,13 +148,5 @@ public class CharacteristicsEntities {
 
     public static EntitiesType[] getCaterpillarEat() {
         return new EntitiesType[]{EntitiesType.GRASS};
-    }
-
-    public static Map<EntitiesType, ObjectPrefs> getCharacteristicsEntities() {
-        return characteristicsEntities;
-    }
-
-    public static int[][] getHowLikelyTheAnimalIsToEatTheFood() {
-        return howLikelyTheAnimalIsToEatTheFood;
     }
 }

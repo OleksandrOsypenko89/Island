@@ -1,5 +1,7 @@
 package com.javarush.osypenko.pref;
 
+import com.javarush.osypenko.animalmakers.EntitiesType;
+import com.javarush.osypenko.animalmakers.FactoryOrganism;
 import com.javarush.osypenko.constants.CharacteristicsEntities;
 import com.javarush.osypenko.entities.Organism;
 import com.javarush.osypenko.exception.AnimalException;
@@ -7,23 +9,35 @@ import com.javarush.osypenko.field.Cell;
 import com.javarush.osypenko.field.GameField;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static com.javarush.osypenko.constants.Constants.REPEAT;
 import static com.javarush.osypenko.field.GameField.field;
 
 public class Application {
     boolean isLife = true;
-    public void runner() {
+
+    public void runner() throws ExecutionException, InterruptedException {
         GameField gameField = new GameField();
-        gameField.initialize();
+
+        EntitiesType[] entitiesTypes = EntitiesType.values();
+        ExecutorService executorService = Executors.newFixedThreadPool(entitiesTypes.length);
+        for (EntitiesType entitiesType : entitiesTypes) {
+            Future<Integer> submit = executorService.submit(new AnimalWorker(entitiesType));
+            System.out.println(submit.get());
+        }
+
         System.out.println("*".repeat(REPEAT) + "\n");
+
         printState();
         System.out.println("*".repeat(REPEAT) + "\n");
 
         do {
             gameField.makeStep();
             try {
-                //noinspection BusyWait
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new AnimalException(e);
@@ -31,7 +45,10 @@ public class Application {
             printState();
             System.out.println("*".repeat(REPEAT) + "\n");
         } while (isLife);
+
+        executorService.shutdown();
     }
+
     public void printState() {
         int bear = 0;
         int eagle = 0;
@@ -52,26 +69,28 @@ public class Application {
 
         for (Cell[] cells : field) {
             for (Cell item : cells) {
-                Map<EntitiesType, Set<Organism>> res = item.sets;
-                for (Set<Organism> value : res.values()) {
-                    for (Organism organism : value) {
-                        switch (organism.getClass().getSimpleName().toUpperCase()) {
-                            case "BEAR" -> bear++;
-                            case "EAGLE" -> eagle++;
-                            case "FOX" -> fox++;
-                            case "SNAKE" -> snake++;
-                            case "WOLF" -> wolf++;
-                            case "BOAR" -> boar++;
-                            case "BUFFALO" -> buffalo++;
-                            case "CATERPILLAR" -> caterpillar++;
-                            case "DEER" -> deer++;
-                            case "DUCK" -> duck++;
-                            case "GOAT" -> goat++;
-                            case "HORSE" -> horse++;
-                            case "MOUSE" -> mouse++;
-                            case "RABBIT" -> rabbit++;
-                            case "SHEEP" -> sheep++;
-                            case "GRASS" -> grass++;
+                if (item != null) {
+                    Map<EntitiesType, Set<Organism>> res = item.sets;
+                    for (Set<Organism> value : res.values()) {
+                        for (Organism organism : value) {
+                            switch (organism.getClass().getSimpleName().toUpperCase()) {
+                                case "BEAR" -> bear++;
+                                case "EAGLE" -> eagle++;
+                                case "FOX" -> fox++;
+                                case "SNAKE" -> snake++;
+                                case "WOLF" -> wolf++;
+                                case "BOAR" -> boar++;
+                                case "BUFFALO" -> buffalo++;
+                                case "CATERPILLAR" -> caterpillar++;
+                                case "DEER" -> deer++;
+                                case "DUCK" -> duck++;
+                                case "GOAT" -> goat++;
+                                case "HORSE" -> horse++;
+                                case "MOUSE" -> mouse++;
+                                case "RABBIT" -> rabbit++;
+                                case "SHEEP" -> sheep++;
+                                case "GRASS" -> grass++;
+                            }
                         }
                     }
                 }

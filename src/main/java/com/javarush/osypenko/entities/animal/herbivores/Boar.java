@@ -8,4 +8,5 @@ public class Boar extends Animal {
     public Boar(ObjectPrefs objectPrefs) {
         super(objectPrefs);
     }
+
 }

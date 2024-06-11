@@ -1,9 +1,10 @@
 package com.javarush.osypenko.entities;
 
+import com.javarush.osypenko.animalmakers.EntitiesType;
+import com.javarush.osypenko.animalmakers.FactoryOrganism;
 import com.javarush.osypenko.constants.CharacteristicsEntities;
 import com.javarush.osypenko.constants.Constants;
 import com.javarush.osypenko.field.Cell;
-import com.javarush.osypenko.pref.EntitiesType;
 import com.javarush.osypenko.field.GameField;
 import com.javarush.osypenko.pref.ObjectPrefs;
 
@@ -35,12 +36,8 @@ public abstract class Organism {
         int newRow = cell.getRow() + ThreadLocalRandom.current().nextInt(0, speedOfMovingCellsMove);
         int newCol = cell.getCol() + ThreadLocalRandom.current().nextInt(0, speedOfMovingCellsMove);
 
-        boolean isMove = true;
+        boolean isMove = newRow < Constants.CELL_X && newCol < Constants.CELL_Y && newRow >= 0 && newCol >= 0;
 
-        //noinspection RedundantIfStatement
-        if (newRow >= Constants.CELL_X || newCol >= Constants.CELL_Y || newRow < 0 || newCol < 0) {
-            isMove = false;
-        }
 
         if (newRow == cell.getRow() && newCol == cell.getCol()) {
             isMove = false;

@@ -8,4 +8,5 @@ public class Mouse extends Animal {
     public Mouse(ObjectPrefs objectPrefs) {
         super(objectPrefs);
     }
+
 }

@@ -1,5 +1,8 @@
 package com.javarush.osypenko.pref;
 
+import lombok.Getter;
+
+@Getter
 public class ObjectPrefs {
     private final String name;
     private final String icon;
@@ -17,34 +20,6 @@ public class ObjectPrefs {
         this.speedOfMovingCellsMove = speedOfMovingCellsMove;
         this.kilogramsOfFoodAnAnimalNeedsForSatiety = kilogramsOfFoodAnAnimalNeedsForSatiety;
         this.deathByStarvationAtWeight = deathByStarvationAtWeight;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public int getMaxNumberOfAnimalsOfThisSpeciesPerCage() {
-        return maxNumberOfAnimalsOfThisSpeciesPerCage;
-    }
-
-    public int getSpeedOfMovingCellsMove() {
-        return speedOfMovingCellsMove;
-    }
-
-    public double getKilogramsOfFoodAnAnimalNeedsForSatiety() {
-        return kilogramsOfFoodAnAnimalNeedsForSatiety;
-    }
-
-    public double getDeathByStarvationAtWeight() {
-        return deathByStarvationAtWeight;
     }
 
     @Override
